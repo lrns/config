@@ -1,0 +1,118 @@
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# fiddle with window
+use_spacer yes
+use_xft yes
+
+# Update interval in seconds
+update_interval 2.0
+
+#minimum_size 250 5
+maximum_width 250
+
+# Draw shades?
+draw_shades no
+
+# Text stuff
+#font monospace
+uppercase no # set to yes if you want all text to be in uppercase
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Xft font when Xft is enabled
+#xftfont Sans:size=8
+#xftfont Bitstream Vera Sans Mono:size=8
+xftfont Sans:size=11
+#xftfont Andale Mono-9
+#xftfont Clean-8
+#xftfont cubicfive10:pixelsize=8
+#xftfont squaredance10:pixelsize=14
+#xftfont swf!t_v02:pixelsize=10
+
+# Text alpha when using Xft
+xftalpha 1
+
+# Stippled borders?
+stippled_borders 3
+
+# border margins
+border_margin 9
+
+# border width
+border_width 5
+
+# Default colors and also border colors, grey90 == #e5e5e5
+default_color white
+background yes
+#own_window_colour brown
+own_window_transparent yes
+
+# Text alignment, other possible values are commented
+# alignment top_left
+#alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+alignment top_left
+
+
+# Gap between borders of screen and text
+gap_x 50
+gap_y 48
+
+# Stuff after 'TEXT' will be formatted on screen
+
+# The following code is written for dark wallpapers (backgrounds).  
+# Configured to display system type, system uptime, CPU clock speed, CPU load, Audacious music player (current song).
+
+TEXT
+${font verdana:size=48}${alignr}${offset -160}${time %e}
+${voffset -91}${goto 132}${color1}${font verdana:size=26}${time %H:%M}$color
+${voffset -21}${goto 132}${font tahoma:size=8}${time %B}$font
+
+${color #1793D1}Arch Linux ${kernel} ${hr 2} $color
+Uptime: $alignr ${uptime}
+Intel Centrino Duo $alignr${freq_g cpu0}Ghz
+$alignr
+CPU:1  ${cpu cpu1}% ${cpubar cpu1}
+CPU:2  ${cpu cpu2}% ${cpubar cpu2}
+POWER $battery
+$battery_bar
+
+${color #1793D1}MEMORY / DISK ${hr 2}$color
+$alignc $mem / $memmax $alignr $memperc%
+$membar
+Swap $alignr $swapperc%
+$swapbar
+
+/ $alignc ${fs_free /} / ${fs_size /} $alignr ${fs_free_perc /}%
+${fs_bar /}
+/home $alignc ${fs_free /home} / ${fs_size /home} $alignr ${fs_free_perc /home}%
+${fs_bar /home}
+c $alignc ${fs_free /mnt/c} / ${fs_size /mnt/c} $alignr ${fs_free_perc /mnt/c}%
+${fs_bar /mnt/c}
+d $alignc ${fs_free /mnt/d} / ${fs_size /mnt/d} $alignr ${fs_free_perc /mnt/d}%
+${fs_bar /mnt/d}
+
+${color #1793D1}NETWORK (${addr eth0}) ${hr 2}$color
+Down: $color${downspeed eth0} k/s 
+Up: ${upspeed eth0} k/s
+Total down: ${totaldown eth0} 
+Total up: ${totalup eth0}
+Inbound: ${tcp_portmon 1 32767 count} 
+Outbound: ${tcp_portmon 32768 61000 count}
+Total: ${tcp_portmon 1 65535 count}
+ 
+
+
+
+

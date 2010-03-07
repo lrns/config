@@ -1,0 +1,21 @@
+# Run the system-wide support stuff
+. $GLOBALAUTOSTART
+
+# Programs to launch at startup
+#hsetroot ~/wallpaper.png &
+#xcompmgr -c -t-5 -l-5 -r4.2 -o.55 &
+
+# SCIM support (for typing non-english characters)
+#export LC_CTYPE=ja_JP.utf8
+#export XMODIFIERS=@im=SCIM
+#export GTK_IM_MODULE=scim
+#export QT_IM_MODULE=scim
+#scim -d &
+
+# Programs that will run after Openbox has started
+(sleep 2 && pypanel) &
+conky &
+wbar &
+synclient TouchpadOff=1
+#xbindkeys &
+(sleep 5 && /home/laurynas/code/tray.py) &
